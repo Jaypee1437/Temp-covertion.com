@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Temperature Conversion</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(violet,yellow,blue,green);
+            
+        }
+        #main{
+            max-width: 300px;
+            background: white;
+           
+            background-size: cover;
+            padding: 5px 15px;
+            text-align: center;
+            border-radius: 7px;
+            box-shadow: 3px 3px 10px black;
+            position: relative;
+        }
+        h2{
+            color: rgb(0,0,150);
+            font-weight: bold;
+            font-size: 2em;
+            letter-spacing: 5px;
+        }
+        #number{
+            text-align: center;
+            font-size: 1.5em;
+            padding: 3px 5px;
+            width: 50%;
+            border: none;
+            border-radius: 3px;
+            box-shadow: 0 3px 5px black;
+            margin-bottom: 10px;
+        }
+        #celcius{
+            font-size: 1.5em;
+            color: green;
+            font-weight: 600;
+            line-height: 30px;
+            letter-spacing: 3px;
+        }
+        #farenheit{
+            font-size: 1.5em;
+            color: blueviolet;
+            font-weight: 600;
+            line-height: 30px;
+            letter-spacing: 3px;
+        }
+        #btn{
+            padding: 7px 13px;
+            border: none;
+            border-radius: 4px;
+            background: rgb(220,0,0);
+            color: white;
+            font-size: 1.1em;
+            margin: 10px 0;
+            transition: scale 0.5s linear;
+        }
+        #btn:hover{
+            background: rgb(180,0,0);
+            transform: scale(0.9);
+            box-shadow: 0 0 3px black;
+           font-size: 1em;
+        }
+        #result{
+            font-size: 1.5em;
+            font-weight: 600;
+            text-decoration: underline;
+            color: red;
+        }
+        img{
+            position: absolute;
+            max-width: 200px;
+            height: 200px;
+            left: -60px;
+            top: 0%;
+            filter:drop-shadow(0 0 5px red);
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <h2>Temperature Conversion</h2>
+        <input type="number" value="0" id="number" min="0" max="1000">
+        <br>
+        <input type="radio" id="celcius" name="unit">
+        <label for="celcius" id="celcius">Celcius - Farenheit</label>
+        <br>
+        <input type="radio" id="farenheit" name="unit">
+        <label for="farenheit" id="farenheit">Farenheit - Celcius</label>
+        <br>
+        <button type="button" id="btn">Convert</button>
+        <br>
+        <img src="j.png" alt="j.png">
+        <p id="result"></p>
+        
+    </div>
+    <script>
+        let number = document.getElementById('number');
+        let celcius = document.getElementById('celcius');
+        let farenheit = document.getElementById('farenheit');
+        let btn = document.getElementById('btn');
+        let result = document.getElementById('result');
+        
+        btn.onclick = function(){
+            if(celcius.checked){
+                let calculate = (number.value * 9 / 5) + 32;
+                result.textContent = Math.floor(calculate) + '°F';
+            }else if(farenheit.checked){
+                let calculate = (number.value - 32) / (5 * 9);
+                result.textContent = Math.floor(calculate) + '°C';
+            }else{
+                result.textContent = 'Pls..Select Option!';
+            }
+            
+        }
+    </script>
+</body>
+</html>
